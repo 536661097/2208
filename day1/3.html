@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="a"></div>
+<div class="b"></div>
+<div class="c"></div>
+</body>
+</html>
+<script>
+    // let a;
+    // let b,c,d;
+    // let e=100;
+    // let f=521,g='awt',h=[];
+    // //  let star='sb'
+    // //  let star='git'
+let w= document.querySelector('.a')
+w.onclick=function() {
+    w.style.backgroundColor='#f79c76'
+    setTimeout(function() {
+        w.style.backgroundColor=null
+     },2000)
+ }
+
+let m= document.querySelector('.b')
+m.onclick=function() {
+    if( m.style.backgroundColor){
+        m.style.backgroundColor=''
+    }else {
+        m.style.backgroundColor='#ccc'
+     }
+    // if( m.style.backgroundColor=='#ccc'){
+    //     m.style.backgroundColor='#96a2bf'
+    // }
+    // else{
+    //     m.style.backgroundColor='#96a2bf'
+    // }
+ }
+
+let n= document.querySelector('.c')
+n.onclick=function() {
+    n.style.backgroundColor='#96a2bf'
+    change()
+ }
+ function change(){
+   setTimeout(function() { 
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    n.style.backgroundColor = "#" + randomColor;
+    change()
+   },2000)
+ }
+
+</script>
+<style>
+    div{
+        width: 100px;
+        height: 50px;
+        border: 1px solid green;
+    }
+</style>
