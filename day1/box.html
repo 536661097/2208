@@ -12,14 +12,14 @@
 </html>
 <script>
 // 第一种
-// let box =document.querySelector('.box')
-// box.onclick = function() {
-//    if(box.style.backgroundColor){
-//        box.style.backgroundColor=''
-//    }else{
-//     box.style.backgroundColor='pink'
-//    }
-//  }
+let box =document.querySelector('.box')
+box.onclick = function() {
+   if(box.style.backgroundColor){
+       box.style.backgroundColor=''
+   }else{
+    box.style.backgroundColor='pink'
+   }
+ }
 //  第二种
 //  let box =document.querySelector('.box')
 //  box.addEventListener('click',function() {
@@ -30,10 +30,10 @@
 //      }
 //   })
 // 第三种
-let box=document.querySelector(".box")
-box.addEventListener('click',function() {
-    box.classList.toggle('active')
- })
+// let box=document.querySelector(".box")
+// box.addEventListener('click',function() {
+//     box.classList.toggle('active')
+//  })
 </script>
 <style>
     .box{

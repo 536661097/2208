@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+//  let arr=['1','2','3'];
+//  let arr1=['4','5','6']
+//   function fn() {
+//     console.log(arguments);
+//    }
+// fn(...arr)
+// console.log(arr.toString());
+// console.log(arr.concat(arr1));
+
+// console.log([...arr,...arr1]);
+
+// for (let i = 0; i < arr.length; i++) {
+//     arr1.push(arr[i])
+// }
+// console.log(arr1);
+
+
+// promise
+// const p =new Promise(function(resolve,reject) {
+//  setTimeout(function() {
+//     let err='数据读取失败'
+//     reject(err)
+//   },1000)
+//  })
+// p.then(res=>{
+//     console.log(res);
+// }).catch (err=>{
+//     console.log(err);
+// }) 
+
+const p =new Promise((resolve, reject) => {
+    const xhr=new XMLHttpRequest();
+    xhr.open("GET","https://api.apiopen.top/getJ");
+    xhr.send();
+    xhr.onreadystatechange=function() {
+        if(xhr.readyState === 4){
+            if (xhr.status >= 200&&xhr.status<300) { 
+                resolve(xhr.response)
+            }else {
+                reject(xhr.status)
+             }
+        }
+     }
+})
+// p.then(function(value){
+ 
+// })
+p.then(
+res=>{
+    console.log(res);
+},
+err=>{
+    console.log(err);
+}
+)
+
+</script>
+<style>
+
+</style>
