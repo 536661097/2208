@@ -41,32 +41,63 @@
 //     console.log(err);
 // }) 
 
-const p =new Promise((resolve, reject) => {
-    const xhr=new XMLHttpRequest();
-    xhr.open("GET","https://api.apiopen.top/getJ");
-    xhr.send();
-    xhr.onreadystatechange=function() {
-        if(xhr.readyState === 4){
-            if (xhr.status >= 200&&xhr.status<300) { 
-                resolve(xhr.response)
-            }else {
-                reject(xhr.status)
-             }
-        }
-     }
-})
-// p.then(function(value){
- 
+// const p =new Promise((resolve, reject) => {
+//     const xhr=new XMLHttpRequest();
+//     xhr.open("GET","https://api.apiopen.top/getJ");
+//     xhr.send();
+//     xhr.onreadystatechange=function() {
+//         if(xhr.readyState === 4){
+//             if (xhr.status >= 200&&xhr.status<300) { 
+//                 resolve(xhr.response)
+//             }else {
+//                 reject(xhr.status)
+//              }
+//         }
+//      }
 // })
-p.then(
-res=>{
-    console.log(res);
-},
-err=>{
-    console.log(err);
-}
-)
 
+// p.then(
+// res=>{
+//     console.log(res);
+// },
+// err=>{
+//     console.log(err);
+// }
+// )
+
+const p =new Promise((resolve, reject) => {
+    setTimeout(() => { 
+        resolve('返回成功结果');
+    },1000)
+});
+
+const result=p.then((value) => {
+    //  console.log(value);
+    //  return value
+
+    return 'fuckyou'
+
+    // return new Promise((resolve, reject) => {
+    //      resolve('ok')
+    //  })
+
+    // throw new Error('出错了')
+ },
+ (err)=>{
+    console.log(err);
+ }
+ )
+console.log(result);
+
+result.then(res=>{
+    console.log(res);
+    return res
+}).then(res1=>{
+    console.log(res1+'mother');
+    return res1+'mother'
+}).then(res2=>{
+     console.log(res2+'dd');
+})
 </script>
 <style>
 

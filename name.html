@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="img">
+        <h3>2208B点名表</h3>  
+        <p class="p">2222</p>
+       <main>
+       <div class="left"></div>
+       <div class="right">
+        <div class="top">
+            <h2>天选之人:</h2><h1 class="h1"></h1>
+        </div>
+        <button class="dr">单人点名</button>
+        <button class="sr">双人点名</button>
+        <button class="nan">男生点名</button>
+        <button class="nv">女生点名</button>
+       </div>
+       </main>
+    </div> 
+</body>
+</html>
+<script>
+// 时间
+let p =document.querySelector('.p')
+ function fn(){
+  setTimeout(()=>{
+    const now =new Date();
+  const year = now.getFullYear(); 
+  const month = now.getMonth() + 1; 
+  const day = now.getDate(); 
+  const hours = now.getHours(); 
+  const minutes = now.getMinutes(); 
+  const seconds = now.getSeconds(); 
+  const time='时间:'+year+'-'+month+'-'+day+'-'+hours+':'+minutes+':'+seconds
+   p.innerHTML=time
+   fn()
+  },1000)
+ }
+ fn()
+//  姓名表
+ let namelist=[
+ { name: "王师琦", sex: "男" },
+ { name: "包胜利", sex: "男" },
+ { name: "郭俊", sex: "男" },
+ { name: "李吉森", sex: "男" },
+ { name: "陈芸", sex: "女" },
+ { name: "王彦凯", sex: "男" },
+ { name: "贾柏林", sex: "男" },
+ { name: "师福齐", sex: "男" },
+ { name: "杨佳润", sex: "男" },
+ { name: "步旭阳", sex: "男" },
+ { name: "郑国均", sex: "男" },
+ { name: "季思佳", sex: "女" },
+ { name: "张旭", sex: "男" },
+ { name: "党少龙", sex: "男" },
+ { name: "田海霖", sex: "男" },
+ { name: "刘集聚", sex: "男" },
+ { name: "高双娇", sex: "女" },
+ { name: "宁帅", sex: "男" },
+ { name: "陈雯轩", sex: "男" },
+ { name: "王师林", sex: "男" },
+ { name: "李沛沛", sex: "女" },
+ { name: "李博", sex: "男" },
+ { name: "崔宇彤", sex: "男" },
+ { name: "颜帅", sex: "男" },
+ { name: "李娅", sex: "女" },
+ { name: "何润皓", sex: "男" },
+ { name: "许永智", sex: "男" },
+ { name: "张嘉宁", sex: "女" },
+ { name: "文婷", sex: "女" }
+ ];
+let left =document.querySelector('.left')
+for (let i = 0; i < namelist.length; i++) {
+    left.innerHTML+=
+    `
+    <span  class="btn" target="_blank">${namelist[i].name}</span>
+    `
+}
+// 天选之人
+let tx=document.querySelector('.h1')
+// 单人点名
+let dan=document.querySelector('.dr')
+dan.onclick = () => {
+    let num=Math.floor(Math.random()*30)
+    tx.innerHTML=namelist[num].name
+ }
+//  双人点名
+let shuang=document.querySelector('.sr')
+shuang.onclick = () => {
+    let num1=Math.floor(Math.random()*30)
+    let num2=Math.floor(Math.random()*30)
+    if(num1!=num2){
+      tx.innerHTML = namelist[num1].name+','+namelist[num2].name  
+    }
+ }
+// //  男生点名
+let boy=[]
+let man=document.querySelector('.nan')
+man.onclick = () => {
+  boy= namelist.filter(item=>item.sex=='男')
+  console.log(boy);
+  let  sum =Math.floor(Math.random() * 22)
+  tx.innerHTML = boy[sum].name
+ }
+// //  女生点名
+let girl=[]
+let nv=document.querySelector('.nv')
+nv.onclick = () => {
+  girl= namelist.filter(item=>item.sex=='女')
+  console.log(girl);
+  let  sum1 =Math.floor(Math.random() * 8)
+  tx.innerHTML = girl[sum1].name
+ }
+ 
+</script>
+<style>
+.img{
+    position: relative;
+    width: 100%;
+    height: 800px;
+    background-image: url(./千库网_紫色光效粒子背景_GIF编号12650.gif) ;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+h3{
+    Color: #fff;
+    text-align: center;
+    margin-top: 100px;
+}
+p{
+    right: 30px;
+    position: absolute;
+    margin: 80px 0;
+    color: #fff;
+}
+main{
+    width: 100%;
+    height: 400px;
+    margin-top: 250px;
+    display: flex;
+}
+.left{
+    width: 50%;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.left span{
+    color: #fff;
+    margin: 30px;
+
+}
+.right{
+    width: 50%;
+    height: 400px;
+}
+.right .top{
+    display: flex;
+    color: #fff;
+     justify-content: center;
+     padding-top: 50px;
+}
+.right .top h2{
+   margin-bottom: -2px;
+}
+.right .top h1{
+    margin-left: 10px;
+}
+.right button{
+    width: 100px;
+    height: 50px;
+    border-radius: 25px;
+    border: 0;
+    background-color: #7ec050;
+    color: #fff;
+    margin-top: 130px;
+    margin-left: 50px;
+}
+.left{
+            background-image: linear-gradient(to right, red, orange, yellow, green, blue, green, yellow, orange, red, orange, yellow, green, blue, green, yellow, orange, red);    
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-background-size: 200% 100%;
+            animation: bgp 5s infinite linear;
+        }
+        @-webkit-keyframes bgp{
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position: -100% 0;
+            }
+        }
+        .left  span {
+            margin-right: 5px;
+            text-decoration: none;
+            padding: 3px 0;
+        }
+.h1{
+            background-image: linear-gradient(to right, red, orange, yellow, green, blue, green, yellow, orange, red, orange, yellow, green, blue, green, yellow, orange, red);    
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-background-size: 200% 100%;
+            animation: bgp 5s infinite linear;
+        }
+        @-webkit-keyframes bgp{
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position: -100% 0;
+            }
+        }
+</style>

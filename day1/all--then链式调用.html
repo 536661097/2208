@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span class="a"></span>
+</body>
+</html>
+<script>
+//     let a='张飞'
+//     let b='关羽'
+//     let c='刘备'
+
+//  function z() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(()=>{
+//            resolve(a);
+//         })
+//     })
+//   }
+
+//   function g() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(()=>{
+//            resolve(b)
+//         })
+//     })
+//   }
+
+//   function l() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(()=>{
+//           resolve(c)
+//         })
+//     })
+//   }
+
+// Promise.all([z(),g(),l()]).then(res=>{
+//     console.log(res);
+// }).catch(err=>{
+//     console.log(err);
+// })
+
+// // 
+
+// let p =new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve('成功')
+//      },1000)
+//  })
+
+// const m=p.then(value=>{
+//     return  value
+// })
+
+// m.then(res=>{
+//     console.log(res);
+//     return res+'1'
+// }).then(res1=>{
+//    console.log(res1);
+//    return res1+'2'
+// }).then(res2=>{
+//    console.log(res2);
+// })
+let a=document.querySelector('.a')
+
+function fn (){
+setTimeout(()=>{ 
+const now =new Date();
+const year = now.getFullYear(); // 年份（例如 2023）
+const month = now.getMonth() + 1; // 月份（0-11），需要加1
+const day = now.getDate(); // 日期（1-31）
+const hours = now.getHours(); // 小时（0-23）
+const minutes = now.getMinutes(); // 分钟（0-59)
+const seconds = now.getSeconds(); // 秒（0-59）
+const milliseconds = now.getMilliseconds(); // 毫秒（0-999）
+const time=year+'-'+month+'-'+day+'-'+hours+':'+minutes+':'+seconds
+  a.innerHTML=time
+    fn()
+    },1000)
+}
+fn()
+
+
+// console.log(time);
+
+// console.log(now);
+// console.log(now.toTimeString());
+</script>
