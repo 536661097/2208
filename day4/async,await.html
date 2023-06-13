@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+//   const a=new Promise((resolve, reject) => {
+//      setTimeout(()=>{
+//          resolve('aaaa')
+//      },1000)
+//   })
+//   const b=new Promise((resolve, reject) => {
+//      setTimeout(()=>{
+//          resolve('bbbb')
+//      },2000)
+//   })
+//   const c=new Promise((resolve, reject) => {
+//      setTimeout(()=>{
+//          resolve('cccc')
+//      },3000)
+//   })
+// Promise.race([a(),b(),c()]).then(res=>{
+//     console.log('res:'+res);
+// }).catch(err=>{
+//     console.log('err:'+err);
+// })
+ 
+//  
+// const path=new Promise((resolve, reject) => {
+//    resolve()
+// })
+
+// path.then(()=>{
+//  console.log('成功');
+// }).catch(()=>{
+//  console.log('失败');
+// }).finally(() => {
+//    console.log('成功和失败');
+//  })
+
+// 
+
+const getapp=function() {
+    return new Promise((resolve, reject) => {
+         setTimeout(()=>{
+             resolve('app')
+         },1000)
+     })
+ }
+ const getbpp=function() {
+    return new Promise((resolve, reject) => {
+         setTimeout(()=>{
+             resolve('bpp')
+         },3000)
+     })
+ }
+ const getcpp=function() {
+    return new Promise((resolve, reject) => {
+         setTimeout(()=>{
+             reject('cpp')
+         },2000)
+     })
+ }
+
+  async  function all(){
+   try {
+    let x=await  getapp()
+     console.log(x);
+     let y=await getbpp()
+     console.log(y);
+     let z=await getcpp()
+     console.log(z);
+    }catch (e) {
+       console.log(e,'eeee');
+     }
+  }
+  all()
+</script>
+<style>
+
+</style>

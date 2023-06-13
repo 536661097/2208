@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <img src="../img/33d602d013bf90a637e6d8d32375279f.png" alt="">
+        <img src="../img/66616fb893578fc2f7b0eac5d829c263.png" alt="">
+        <img src="../img/e178c28f6aa3b13c784a422d0d4cc044_t.gif" alt="">
+        <img src="../img/u=1595072465,3644073269&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=1956604245,3662848045&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=2397542458,3133539061&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=2511982910,2454873241&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=2529476510,3041785782&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=2763645735,2016465681&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=3435942975,1552946865&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=3569419905,626536365&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=3779234486,1094031034&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=825057118,3516313570&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=727460147,2222092211&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=4198287529,2774471735&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/e178c28f6aa3b13c784a422d0d4cc044_t.gif" alt="">
+        <img src="../img/u=1595072465,3644073269&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=1956604245,3662848045&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=2397542458,3133539061&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=2511982910,2454873241&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=3569419905,626536365&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=3779234486,1094031034&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=825057118,3516313570&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=727460147,2222092211&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/66616fb893578fc2f7b0eac5d829c263.png" alt="">
+        <img src="../img/e178c28f6aa3b13c784a422d0d4cc044_t.gif" alt="">
+        <img src="../img/u=1595072465,3644073269&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=1595072465,3644073269&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=1956604245,3662848045&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=2397542458,3133539061&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=2511982910,2454873241&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=4198287529,2774471735&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/e178c28f6aa3b13c784a422d0d4cc044_t.gif" alt="">
+        <img src="../img/u=1595072465,3644073269&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=1956604245,3662848045&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=2397542458,3133539061&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=2511982910,2454873241&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=3569419905,626536365&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=3779234486,1094031034&fm=193&f=GIF.jpg" alt="">
+        <img src="../img/u=825057118,3516313570&fm=193&f=GIF.jpg" alt="">
+    </div>
+</body>
+</html>
+<style>
+  .box {
+            position: relative;
+        }
+        img {
+            width: 200px;
+            vertical-align: top;  /*vertical-align的属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐。允许指定负长度值和百分比值。这会使元素降低而不是升高。在表单元格中，这个属性会设置单元格框中的单元格内容的对齐方式。*/
+            padding: 5px;
+        }
+</style>
+<script>
+     $(function () {
+        // 获取图片的宽度(200px)
+        let imgWidth = $('img').outerWidth(); // 200
+
+        waterfallHandler();
+
+        // 瀑布流处理
+        function waterfallHandler() {
+            // 获取图片的列数
+            let column = parseInt($(window).width() / imgWidth);
+
+            // 高度数组
+            let heightArr = [];
+            for(let i=0; i<column; i++) {
+                heightArr[i] = 0;
+            }
+
+            // 遍历所有图片进行定位处理
+            $.each($('img'), function (index, item) {
+                // 当前元素的高度
+                let itemHeight = $(item).outerHeight();
+                // 高度数组最小的高度
+                let minHeight = Math.min(...heightArr);
+                // 高度数组最小的高度的索引
+                let minIndex = heightArr.indexOf(minHeight);
+                
+                $(item).css({
+                    position: 'absolute',
+                    top: minHeight + 'px',
+                    left: minIndex * imgWidth + 'px'
+                });
+
+                heightArr[minIndex] += itemHeight;
+            });
+        }
+        
+        // 窗口大小改变
+        $(window).resize(function () {
+            waterfallHandler();
+        });
+    });
+</script>

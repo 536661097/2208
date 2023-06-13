@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <h2>欢迎{{name}}</h2>
+        <input type="text" placeholder="按下回车" @keydown.sb="show">
+        <div>{{firstname}}-{{lastname}}</div>
+        <h1>姓: <input type="text" v-model="firstname"></h1>
+        <h1>名: <input type="text" v-model="lastname"></h1>
+        <h1>全名: {{fullname}}</h1> -->
+        <h1>今天天气很{{cool}}</h1>
+        <button @click="change">切换</button>
+        <!--  -->
+        <h3>b的值是:{{a.b}}</h3>
+        <button @click="a.b++">点我让b++</button>
+        <h3>e的值是:{{a.c.e}}</h3>
+        <button @click="a.c.e++">点我让e++</button>
+        <button @click="a={v:666,b:888}">点我替换掉a</button>
+    </div>
+</body>
+</html>
+<script>
+    Vue.config.productionTip = false;
+    Vue.config.keyCodes.sb=13
+    new Vue({
+      data: {
+        // name:"高薪就业",
+        // firstname:'王',
+        // lastname:'富贵'
+        cool:'炎热',
+        status:true,
+        a:{
+            b:100,
+            c:{
+                e:200
+            }
+        }
+       },
+       methods: {
+        //  show(e){
+        //     console.log(e.target.value);
+        //  }
+        change(){
+            this.status=!this.status
+            // console.log(this.status);
+        }
+       },
+    computed:{
+        // fullname:{
+        //  get(){
+
+        //  },
+        //  set(newvalue){
+        //     console.log(newvalue);
+        //  }
+        // }
+       
+     },
+     watch: {
+        status:{
+            immediate:true,
+             handler(newVal,oldValue){
+              console.log(oldValue,newVal);
+              this.cool=newVal?'炎热':'凉爽'
+             }
+         }
+      }
+    }).$mount("#app");
+</script>
+<!-- 
+    watch:是异步的 不支持缓存 数值必须在data中声明
+    computed:是同步的 支持缓存  不能再data中声明
+ -->

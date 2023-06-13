@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+    <!-- <div id="app">
+        <h1>{{mes1}}没有路,全是{{mes2}}</h1>
+    </div> -->
+    <!--  -->
+    <!-- <div id="app">
+        <h1>插值语法</h1>
+        <h3>你好,{{name}}</h3>
+        <hr/>
+        <h1>指令语法</h1>
+        <a v-bind:href="school.url.toUpperCase()" x="hello">点我去{{school.name}}学习1</a>
+        <a :href="school.url" x="hello">点我去{{school.name}}学习2</a>
+    </div> -->
+    <!--  -->
+    <!-- <div id="app">
+        <h2>学校名称：{{name}}</h2>
+        <h2>学校地址：{{address}}</h2>
+    </div> -->
+
+  <div id="app">
+    <div class="mp" @click="mp">
+     <button @click.stop="add1">点击1</button>
+    <button @click="add2($event,1,2,3,4,5,6)" name="999">点击2</button>
+    <a href="https://www.baidu.com" @click.prevent="pre">点我去百度</a>   
+    </div>
+    
+  </div>
+</body>
+</html>
+<script>
+    // 1
+    // new Vue({
+    //     el: "#app",
+    //     data: {
+    //     mes1:'北京',
+    //     mes2:'地道'
+    //      }
+    // })
+    // 2
+//  const vm=   new Vue({
+//         // el: "#app",
+//         data: {
+//         mes1:'北京',
+//         mes2:'地道'
+//          }
+//     })
+// vm.$mount("#app")
+
+// new Vue({
+//         el:'#app',
+//        data: {
+//          name:'小红',
+//          school:{
+//             url: 'https://www.baidu.com',
+//             name:"百度"
+//          }
+//         }
+//     }
+//     )
+// 
+
+    // let obj1={x:100}
+    // let obj2={y:200}
+    // Object.defineProperty(obj2,'x',{
+    //     get(){
+    //       return obj.x
+    //     },
+    //     set(value) {
+    //      obj2.y = value;
+    //      }
+    // })
+
+    // new Vue({
+    //     el: '#app',
+    //     data: {
+    //         address:'北京',
+    //         name:'某云'
+    //      }
+    // })
+
+
+//     let number=30
+//     let person={
+//         name:'张杰',
+//         job:'歌手'
+//      }
+// Object.defineProperty(person,'age',{
+//     get(){
+//         console.log('触发了get');
+//     },
+//     set(){
+//         console.log('触发了set');
+//     }
+// })
+
+new Vue({
+    data: { },
+    methods: {
+        mp(){
+         console.log("我是父元素，我冒泡了！");
+        },
+        add1() {
+            console.log('点击了第一个按钮');
+         },
+         add2(event,...args) {
+           console.log(event);
+           console.log(args);
+          },
+          pre() {
+            console.log('阻止了默认事件');
+           }
+     }
+}).$mount('#app');
+</script>

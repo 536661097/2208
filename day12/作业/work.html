@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+         <h2>欢迎{{name}}</h2>
+         <!--  -->
+         <input type="text" @keydown.sb="kd"> 
+         <!--  -->
+          <div>{{firstname}}-{{lastname}}</div>
+         <h1>姓：<input type="text" v-model="firstname"></h1>   
+         <h1>名：<input type="text" v-model="lastname"></h1>   
+         <!--  -->
+         <h1>今天天气很{{cool}}</h1>
+         <button @click="change">切换</button>
+         <!--  -->
+          <h1>b的值是{{a.b}}</h1>
+          <button @click="a.b++">点我b++</button>
+          <h1>b的值是{{a.c.d}}</h1>
+          <button @click="a.c.d++">点我d++</button>
+         <!--  -->
+           <div class="basic" :class="mood">{{name}} <button @click="qh">点我随机样式</button></div>
+         <!--  -->
+         <div  class="basic" :class="classobj"> 样式合并 </div>
+         <!--  -->
+         <div  class="basic" :class="trues" @click="trues.baidu2=!trues.baidu2"> 选择样式是否启用 </div>
+         <!--  -->
+         <div  class="basic"  :style="obj" @click="sty"> style动态修改样式 </div>
+         <!--  -->
+    </div>
+</body>
+</html>
+<style>
+
+</style>
+<script>
+  Vue.config.keyCodes.sb=13
+  new Vue({
+    data: { 
+     name:'高薪就业',
+     firstname:'王',
+     lastname:'富贵',
+     status:true,
+     cool:'炎热',
+     mood:'',
+     trues:{
+     baidu1:true,
+     baidu2:false
+     },
+     obj:{
+      color:'green',
+      fontSize:'30px'
+     },
+     classobj:['baidu1','baidu2','baidu3'],
+     a:{
+        b:100,
+        c:{
+            d:200
+        }
+     }
+    },
+    methods: {
+    kd(e){
+    console.log(e.target.value);
+    },
+    change(){
+         this.status=!this.status;
+       this.cool= this.status==true?'炎热':'凉快'
+     },
+     qh(){
+        let arr=['happy','sad','normal']
+        let idx=Math.floor(Math.random()*3)
+        this.mood=arr[idx]
+     },
+     sty(){
+        this.$set(this.obj,'backgroundColor','red')
+     }
+    },
+     watch: {
+
+      },
+      computed: {
+
+       }
+
+  }).$mount('#app');
+</script>
+<style>
+    .basic{
+				width: 400px;
+				height: 100px;
+				border: 1px solid black;
+			}
+			
+			.happy{
+				border: 4px solid red;;
+				background-color: rgba(255, 255, 0, 0.644);
+				background: linear-gradient(30deg,yellow,pink,orange,yellow);
+			}
+			.sad{
+				border: 4px dashed rgb(2, 197, 2);
+				background-color: gray;
+			}
+			.normal{
+				background-color: skyblue;
+			}
+
+			.baidu1{
+				background-color: yellowgreen;
+                height: 100px;
+			}
+			.baidu2{
+				font-size: 30px;
+                width: 150px;
+				text-shadow:2px 2px 10px red;
+			}
+			.baidu3{
+                margin-top: 30px;
+				border-radius: 20px;
+			}
+</style>
