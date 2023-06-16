@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkdemo1"]=self["webpackChunkdemo1"]||[]).push([[38],{4038:function(e,n,t){t.r(n),t.d(n,{default:function(){return d}});var u=function(){var e=this;e._self._c;return e._m(0)},r=[function(){var e=this,n=e._self._c;return n("div",[n("h1",[e._v("欢迎来到梦学谷会员管理系统")])])}],s={name:"",components:{},data(){return{}},created(){},mounted(){},methods:{}},c=s,o=t(1001),a=(0,o.Z)(c,u,r,!1,null,"05beb8e0",null),d=a.exports}}]);
+//# sourceMappingURL=38.1844e751.js.map
